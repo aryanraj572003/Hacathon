@@ -59,5 +59,6 @@ A specialized reading assistance tool that adapts to users with dyslexia, tracki
 
 - **Web Speech API**: For speech recognition and text-to-speech
 - **Bacon Ipsum API**: For generating sample paragraphs (free)
+- **Huggig face API**: For generating pragraph using prompt(GPT2.0 model)
 
 This project is designed to help people with dyslexia improve their reading skills through adaptive technology. 
