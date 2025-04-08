@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Reading Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Age Selection Modal -->
+    <!-- <div id="ageModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to Adaptive Reading Assistant</h2>
+            <p>Please select your age range to personalize your reading experience:</p>
+            
+            <div class="age-options">
+                <button class="age-btn" data-age="child">5-12 years</button>
+                <button class="age-btn" data-age="teen">13-17 years</button>
+                <button class="age-btn" data-age="adult">18+ years</button>
+            </div>
+            
+            <div class="advanced-option">
+                <label for="exactAge">Or enter your exact age:</label>
+                <input type="number" id="exactAge" min="3" max="100" placeholder="e.g., 10">
+                <button id="submitExactAge">Submit</button>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <h1>Adaptive Reading Assistant</h1>
+        <div class="user-info">
+            <span id="userAgeDisplay"></span>
+            <button id="changeAge" class="small-btn">Change Age</button>
+        </div>
+        
+        <div class="two-column-layout">
+            <!-- Left Column: Reading Area and Controls -->
+            <div class="left-side">
+                <div class="reading-area" id="readingArea">
+                    <p id="readingText"></p>
+                    <div id="wordTracker"></div>
+                </div>
+                
+                <div class="speech-status">
+                    <div id="speechStatus">Click "Start Reading Aloud" to begin</div>
+                    <div id="currentWord" class="current-word"></div>
+                </div>
+                
+                <div class="controls">
+                    <button id="startReading">Start Reading</button>
+                    <button id="stopReading" disabled>Pause</button>
+                    <button id="resumeReading" disabled>Resume</button>
+                    <button id="getNewParagraph">New Paragraph</button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Settings and Analytics -->
+            <div class="right-side">
+                <!-- Struggling Words Section -->
+                <div class="difficult-words-area">
+                    <h3>Words You Struggled With</h3>
+                    <ul id="difficultWordsList"></ul>
+                </div>
+                
+                <!-- Reading Settings Below Words -->
+                <div class="settings" id="settingsArea">
+                    <h3>Reading Settings</h3>
+                    <div class="setting">
+                        <label for="fontSize">Font Size:</label>
+                        <input type="range" id="fontSize" min="16" max="32" value="20">
+                        <span id="fontSizeValue">20px</span>
+                    </div>
+                    <div class="setting">
+                        <label for="letterSpacing">Letter Spacing:</label>
+                        <input type="range" id="letterSpacing" min="0" max="10" value="2">
+                        <span id="letterSpacingValue">2px</span>
+                    </div>
+                    <div class="setting">
+                        <label for="backgroundColor">Background:</label>
+                        <select id="backgroundColor">
+                            <option value="#f0f0f0">Light Gray</option>
+                            <option value="#fffacd" selected>Light Yellow</option>
+                            <option value="#e0f7fa">Light Blue</option>
+                            <option value="#f9fbe7">Light Green</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <label for="readingSpeed">Speech Rate:</label>
+                        <input type="range" id="readingSpeed" min="0.7" max="1.3" step="0.1" value="1">
+                        <span id="readingSpeedValue">1x</span>
+                    </div>
+                </div>
+                
+                <!-- Reading Statistics -->
+                <div class="stats hidden" id="statsArea">
+                    <h3>Reading Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-value"><span id="readingTime">0</span></div>
+                            <div class="stat-label">Reading Time (s)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-running"></i></div>
+                            <div class="stat-value"><span id="wpm">0</span></div>
+                            <div class="stat-label">Words per Minute</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="stat-value"><span id="difficultWords">0</span></div>
+                            <div class="stat-label">Difficult Words</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+                            <div class="stat-value"><span id="avgPause">0</span></div>
+                            <div class="stat-label">Avg Pause (s)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reading Progress -->
+                    <div class="historical-stats" id="historicalStatsArea">
+                        <h3>Reading Progress</h3>
+                        <div class="graph-container">
+                            <canvas id="progressGraph" width="600" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
